@@ -1,0 +1,92 @@
+===================================================================================
+GLOBAL
+===================================================================================
+global.outputFolderPath     = output/example_mag_susc/
+global.description          = Calculation of mag forward data (synthetic example for nullspace tests)
+
+===================================================================================
+MODEL GRID parameters
+===================================================================================
+# nx ny nz
+modelGrid.size                      = 147 22 39
+modelGrid.grav.file                 = None
+modelGrid.magn.file                 = data/gravmag/example_mag_susc/model_grid_mag_susc_example.txt
+===================================================================================
+DATA parameters
+===================================================================================
+forward.data.magn.nData             = 200
+forward.data.magn.dataGridFile      = data/gravmag/example_mag_susc/data_vals_example.txt
+forward.data.magn.dataValuesFile    = data/gravmag/example_mag_susc/data_vals_example.txt
+forward.data.grav.dataGridFile      = None
+forward.data.grav.dataValuesFile    = None
+
+
+
+
+
+
+===================================================================================
+DEPTH WEIGHTING
+===================================================================================
+forward.depthWeighting.type         = 1
+forward.depthWeighting.magn.power          = 3.0d0
+
+===================================================================================
+SENSITIVITY KERNEL
+===================================================================================
+sensit.readFromFiles                = 0
+sensit.folderPath                   = output/example_mag_susc/SENSIT/
+
+===================================================================================
+MATRIX COMPRESSION
+===================================================================================
+# 0-none, 1-wavelet compression.
+forward.matrixCompression.type                       = 1
+forward.matrixCompression.rate                       = 0.15
+
+===================================================================================
+PRIOR MODEL
+===================================================================================
+inversion.priorModel.type           = 1
+inversion.priorModel.magn.value          = 0.d0
+inversion.priorModel.magn.file           = None
+
+
+===================================================================================
+STARTING MODEL
+===================================================================================
+inversion.startingModel.type        = 1
+inversion.startingModel.type             = 1
+inversion.startingModel.magn.value       = 0.d0
+inversion.startingModel.magn.file        = None
+
+
+===================================================================================
+INVERSION parameters
+===================================================================================
+inversion.nMajorIterations          = 50
+inversion.nMinorIterations          = 100
+inversion.writeModelEveryNiter      = 0
+inversion.minResidual               = 1.d-13
+
+===================================================================================
+MODEL DAMPING (m - m_prior)
+===================================================================================
+inversion.modelDamping.magn.weight  = 0.d0
+inversion.modelDamping.normPower    = 2.0d0
+
+===================================================================================
+JOINT INVERSION parameters
+===================================================================================
+inversion.joint.grav.problemWeight  = 0.d0
+inversion.joint.magn.problemWeight  = 1.d0
+
+===================================================================================
+ADMM constraints
+===================================================================================
+
+inversion.admm.enableADMM              = 1
+inversion.admm.nLithologies            = 3
+inversion.admm.magn.bounds             = -20. 20. 90. 130. 220. 260.
+inversion.admm.magn.boundsFile         = None
+inversion.admm.magn.weight             = 1.d-5
