@@ -212,7 +212,7 @@ def set_plotprops():
     Set default plot properties to use for all plots in the script.
     """
 
-    plt.rcParams["font.family"] = "Times New Roman"
+    # plt.rcParams["font.family"] = "Times New Roman"
     plt.rcParams.update({'font.size': 14})
 
 
