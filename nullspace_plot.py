@@ -213,7 +213,7 @@ def set_plotprops():
     """
 
     # plt.rcParams["font.family"] = "Times New Roman"
-    plt.rcParams.update({'font.size': 14})
+    # plt.rcParams.update({'font.size': 14})
 
 
 def plot_addticks_cbar(cbar_title, cbar_ticks=None):
