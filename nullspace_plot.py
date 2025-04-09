@@ -213,7 +213,7 @@ def set_plotprops():
     """
 
     # plt.rcParams["font.family"] = "Times New Roman"
-    plt.rcParams.update({'font.size': 14})
+    # plt.rcParams.update({'font.size': 14})
 
 
 def plot_addticks_cbar(cbar_title, cbar_ticks=None):
@@ -234,14 +234,14 @@ def plot_addticks_cbar(cbar_title, cbar_ticks=None):
         # cbar.set_label(cbar_title, labelpad=-20, y=-0.015, rotation=0, fontfamily='serif')
         # cbar.set_label(cbar_title, labelpad=-20, x=1.15, y=-0.02, rotation=0)
         # cbar.set_label(cbar_title, labelpad=-20, x=1.10, y=1.125, rotation=0)
-        cbar.set_label(cbar_title, labelpad=-20, x=1.10, y=1.125, rotation=0)
+        cbar.set_label(cbar_title, labelpad=0, rotation=0)
 
     else: 
 
         cbar = plt.colorbar(shrink=0.75, ticks=cbar_ticks, orientation='vertical')
         # cbar.set_label(cbar_title, labelpad=-20, y=-0.015, rotation=0, fontfamily='serif')
         # cbar.set_label(cbar_title, labelpad=-20, x=1.15, y=-0.02, rotation=0)
-        cbar.set_label(cbar_title, labelpad=-20, x=1.10, y=1.125, rotation=0)
+        cbar.set_label(cbar_title, labelpad=0, rotation=0)
 
         ## Changing the font of ticks.
         # for i in cbar.ax.yaxis.get_title():
@@ -294,7 +294,7 @@ def plot_metrics_perturbation(misfit_evolution, hamiltonian, show=True):
     # Number of iterations that will be plotted. 
     n_it_plot = len(misfit_evolution[misfit_evolution>0] ) - 1
 
-    fig = plt.figure(rd.randint(0, int(1e6)), figsize=(10, 6.75), constrained_layout=True)
+    fig = plt.figure(rd.randint(0, int(1e6)), figsize=(8, 5), constrained_layout=True)
     # fig.tight_layout()
 
     ax = fig.add_subplot(4, 1, 1)
@@ -310,7 +310,7 @@ def plot_metrics_perturbation(misfit_evolution, hamiltonian, show=True):
     plt.title('(b) Artificial Hamiltonian (total energy)')
     ax.set_ylabel('Total Energy')
     if n_it_plot>0:
-        ax.set_ylim([0, np.max(hamiltonian.total_energy[:n_it_plot])*1.05])
+        ax.set_ylim([0, np.max(hamiltonian.total_energy[:n_it_plot])*1.1])
     ax.set_xlabel('Epochs')
     add_grid(ax)
 
@@ -507,7 +507,7 @@ def plot_navigation_xsection(mpars, ppars, ind_scatter):
     n_row_subplots = 3
     n_columns_subplot = 1
 
-    fig = plt.figure(rd.randint(0, int(1e6)), figsize=(13, 7))
+    fig = plt.figure(rd.randint(0, int(1e6)), figsize=(8, 5))
 
     for i in range(0, n_subplots):
 
