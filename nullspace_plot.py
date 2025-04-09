@@ -342,7 +342,7 @@ def plot_data(geophy_data, geophy_data_diff, rotation_matrix):
 
     geophy_data.x_data, geophy_data.y_data = rotate_data(geophy_data, rotation_matrix)
 
-    fig = plt.figure(rd.randint(0, int(1e6)), figsize=(10, 10), constrained_layout=True)
+    fig = plt.figure(rd.randint(0, int(1e6)), figsize=(8, 5), constrained_layout=True)
 
     ax = fig.add_subplot(4, 1, 1)
     plt.scatter(geophy_data.x_data / 1e3,
@@ -599,7 +599,7 @@ def plot_navigation_depthslice(mpars, ppars, rotation_matrix, indice_scatter):
 
     coord_x, coord_y, coord_z = rotate_mesh(mpars, rotation_matrix)
 
-    fig = plt.figure(rd.randint(0, int(1e6)), figsize=(8, 8), constrained_layout=True)
+    fig = plt.figure(rd.randint(0, int(1e6)), figsize=(8, 5), constrained_layout=True)
 
     for i in range(0, n_subplots):
         ax = fig.add_subplot(n_row_subplots, n_columns_subplot, i + 1)
