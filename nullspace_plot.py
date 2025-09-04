@@ -503,11 +503,11 @@ def plot_navigation_xsection(mpars, ppars, ind_scatter):
     z_plot = mpars.z.reshape(mpars.dim)[:, ppars.slice_x, :]
     x_plot = mpars.x.reshape(mpars.dim)[:, ppars.slice_x, :]
 
-    n_subplots = 3
-    n_row_subplots = 3
+    n_subplots = 4
+    n_row_subplots = 4
     n_columns_subplot = 1
 
-    fig = plt.figure(rd.randint(0, int(1e6)), figsize=(8, 5))
+    fig = plt.figure(rd.randint(0, int(1e6)), figsize=(8, 8))
 
     for i in range(0, n_subplots):
 
@@ -642,10 +642,12 @@ def prepare_plots(dim, mvars, m_diff, ppars, xlims, ylims):
     m1 = mvars.delta_m_orig.reshape(dim)
     # Second subplot.
     m2 = mvars.m_nullspace_orig.reshape(dim)
-    # Third subplot.
-    m3 = m_diff.reshape(dim)
+    # Third subplot. 
+    m3 = mvars.m_curr.reshape(dim)
+    # Fourth subplot.
+    m4 = m_diff.reshape(dim)
 
-    ppars.plot_models = (m1, m2, m3)
+    ppars.plot_models = (m1, m2, m3, m4)
 
     # Color limits for the subplots.
     # For Pyrenees field case.
@@ -660,21 +662,24 @@ def prepare_plots(dim, mvars, m_diff, ppars, xlims, ylims):
     #                np.array([-300, 300]))
     ppars.clims = (None,
                    None,
+                   None,
                    None)
 
     # # Colormaps for each subplot.
     ppars.colorschemes = (cc.cm.CET_R4,
                           cc.cm.CET_R4,
-                        #   cc.cm.CET_R4,
+                          cc.cm.CET_R4,
                           'seismic')
 
     # Titles for each subplot.
-    ppars.plot_titles = ('(a) Start of nullspace navigation:',
-                         '(b) End of null space navigation',
-                         '(c) Difference: End - Start')
+    ppars.plot_titles = ('(a) Perturbation',
+                         '(b) Starting point for space navigation',
+                         '(c) End of null space navigation',
+                         '(d) Difference: End - Start')
 
     # Titles for each colorbar attached to the subplots.
     ppars.cbar_titles = ('SI',
+                         'SI',
                          'SI',
                          'SI')
 
